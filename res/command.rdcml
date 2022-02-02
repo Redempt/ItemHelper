@@ -4,10 +4,20 @@ itemhelper,ih {
 		hook apply
 		context mainhand
 		help Set a property of an item. Use --level to choose where to insert lore or the level of an enchantment.
+		attribute attribute:attribute modifier:modifier slot:slot? {
+			help Set the base value of an attribute for an item
+			hook addattrmod
+			context mainhand
+		}
 	}
 	remove property<multi>:property value:value? {
 		hook remove
 		context mainhand
 		help Remove a property of an item.
+		attribute attribute:attribute {
+			help Remove the modifiers for an attribute of an item
+			hook removeattrmods
+			context mainhand
+		}
 	}
 }
