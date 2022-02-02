@@ -1,0 +1,13 @@
+itemhelper,ih {
+	permission itemhelper.use
+	set property:property value:value int<0,>:--level(-1) {
+		hook apply
+		context mainhand
+		help Set a property of an item. Use --level to choose where to insert lore or the level of an enchantment.
+	}
+	remove property<multi>:property value:value? {
+		hook remove
+		context mainhand
+		help Remove a property of an item.
+	}
+}
