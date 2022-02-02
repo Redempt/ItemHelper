@@ -71,16 +71,11 @@ public class ItemHelper extends JavaPlugin implements Listener {
 			if (s.startsWith("x")) {
 				return new AttributeModifier("mod", Double.parseDouble(s.substring(1)) - 1, Operation.MULTIPLY_SCALAR_1);
 			}
-			try {
-				Operation op = s.endsWith("%") ? Operation.ADD_SCALAR : Operation.ADD_NUMBER;
-				s = s.replaceAll("%$", "");
-				double amount = Double.parseDouble(s);
-				amount *= op == Operation.ADD_SCALAR ? 0.01 : 1;
-				return new AttributeModifier("mod", amount, op);
-			} catch (Exception e) {
-				e.printStackTrace();
-				return null;
-			}
+			Operation op = s.endsWith("%") ? Operation.ADD_SCALAR : Operation.ADD_NUMBER;
+			s = s.replaceAll("%$", "");
+			double amount = Double.parseDouble(s);
+			amount *= op == Operation.ADD_SCALAR ? 0.01 : 1;
+			return new AttributeModifier("mod", amount, op);
 		});
 		
 		new CommandParser(this.getResource("command.rdcml"))
